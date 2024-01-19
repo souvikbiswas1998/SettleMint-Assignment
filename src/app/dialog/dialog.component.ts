@@ -54,8 +54,6 @@ export class DialogComponent {
   }
 
   saveFormData() {
-    console.log(this.dialog_data);
-
     if (this.formGroup.invalid) return this.dataService.showSnackbar('all the form fields are reuired');
     let data2 = this.formGroup.value;
     data2.id = this.id || +new Date()

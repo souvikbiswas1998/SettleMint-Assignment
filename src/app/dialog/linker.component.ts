@@ -17,10 +17,10 @@ export class LinkerComponent {
       data: { id: this.route.snapshot.params['id'], isOpenInDialog: false, data: this.router.getCurrentNavigation()?.extras?.state?.['data'] },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.animal = result;
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    //   // this.animal = result;
+    // });
   }
 
 }

@@ -56,13 +56,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
             this.localData = data
             this.setData()
         })
-        console.log('localData', this.localData)
     }
 
     // see https://stackoverflow.com/questions/53144939/angular-cdk-connecting-multiple-drop-zones-with-cdkdroplistconnectedto
     delete(id: any) {
         if (confirm("Are you sure?") == true) {
-            console.log('id', id)
             for (let i = 0; i < data.length; i++) {
                 if (data[i].id === id) data.splice(i, 1);
             }
@@ -76,8 +74,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
 
     drop(event: any) {
-        console.log(event.item.data);
-        console.log(event.container.id);
+        // console.log(event.item.data);
+        // console.log(event.container.id);
         if (event?.item?.data) event.item.data.status = event.container.id;
         if (event.previousContainer === event.container) {
             moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -90,15 +88,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     getDraggedItem1(item: any) {
-        console.log(1, item.data.status);
         return true
     }
     getDraggedItem2(item: any) {
-        console.log(2, item.data.status);
         return item.data.status !== 'Complete'
     }
     getDraggedItem3(item: any) {
-        console.log(3, item.data.status);
         return item.data.status !== 'To Do'
     }
 
@@ -139,8 +134,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
             data: { id: id, isOpenInDialog: true, data: data },
         });
 
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-        });
+        // dialogRef.afterClosed().subscribe(result => {
+        // console.log('The dialog was closed');
+        // });
     }
 }

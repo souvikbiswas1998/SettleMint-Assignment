@@ -13,7 +13,6 @@ export class DataService {
   $taskDatas: Observable<any[]> = this.subject.asObservable()
   constructor(private snackBar: MatSnackBar) {
     this.$taskDatas.subscribe((data2: any) => {
-      console.log(data2);
       if (data2) data.push(data2)
     })
   }
