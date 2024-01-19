@@ -14,7 +14,7 @@ export class DataService {
   constructor(private snackBar: MatSnackBar) {
     this.$taskDatas.subscribe((data2: any) => {
       console.log(data2);
-      data.push(data2)
+      if (data2) data.push(data2)
     })
   }
 

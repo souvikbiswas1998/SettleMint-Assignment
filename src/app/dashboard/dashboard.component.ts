@@ -133,7 +133,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     openDialog(id?: any, data?: any) {
         const dialogRef = this.dialog.open(DialogComponent, {
-            height: '66%',
+            height: '75%',
             width: '66%',
             maxWidth: '600px',
             data: { id: id, isOpenInDialog: true, data: data },
