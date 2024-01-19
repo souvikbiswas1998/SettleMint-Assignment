@@ -1,4 +1,4 @@
-import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
+import { Component, Inject, LOCALE_ID, OnDestroy, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -24,11 +24,11 @@ import data from '../../assets/data.json';
     templateUrl: './dashboard.component.html',
     styleUrl: './dashboard.component.scss',
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
     bgcolor = 'lightyellow';
     format = (value: string) => formatDate(value, 'short', this.locale)
     localData: any = data;
-    formGroup!: FormGroup
+    formGroup!: FormGroup;
 
     allStatus: string[] = ['To Do', 'In Progress', 'Complete'];
     priorities: string[] = ['High', 'Medium', 'Low'];
@@ -40,6 +40,8 @@ export class DashboardComponent implements OnInit {
         // console.log(this.router.getCurrentNavigation()?.extras?.state);
         let extra = this.router.getCurrentNavigation()?.extras?.state;
         if (extra) this.openDialog(extra?.['id'], extra?.['data'])
+    }
+    ngOnDestroy(): void {
     }
     setData() {
         this.toDoList = this.localData?.filter((e: any) => e.status == 'To Do');
@@ -59,16 +61,24 @@ export class DashboardComponent implements OnInit {
 
     // see https://stackoverflow.com/questions/53144939/angular-cdk-connecting-multiple-drop-zones-with-cdkdroplistconnectedto
     delete(id: any) {
-        console.log('id', id)
-        for (let i = 0; i < data.length; i++) {
-            if (data[i].id === id) data.splice(i, 1);
+        if (confirm("Are you sure?") == true) {
+            console.log('id', id)
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].id === id) data.splice(i, 1);
+            }
+            this.localData = data;
+            this.setData();
+            this.dataService.showSnackbar("Task Deleted Successfully")
+        } else {
+            this.dataService.showSnackbar("Task not Deleted")
         }
-        this.localData = data;
-        this.setData();
     }
 
 
-    drop(event: CdkDragDrop<string[]>) {
+    drop(event: any) {
+        console.log(event.item.data);
+        console.log(event.container.id);
+        if (event?.item?.data) event.item.data.status = event.container.id;
         if (event.previousContainer === event.container) {
             moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
         } else {
@@ -78,6 +88,20 @@ export class DashboardComponent implements OnInit {
                 event.currentIndex);
         }
     }
+
+    getDraggedItem1(item: any) {
+        console.log(1, item.data.status);
+        return true
+    }
+    getDraggedItem2(item: any) {
+        console.log(2, item.data.status);
+        return item.data.status !== 'Complete'
+    }
+    getDraggedItem3(item: any) {
+        console.log(3, item.data.status);
+        return item.data.status !== 'To Do'
+    }
+
     onEntered(enter: any) {
         console.log('ee', enter);
     }
