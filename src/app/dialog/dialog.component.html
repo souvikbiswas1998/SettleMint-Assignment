@@ -1,0 +1,48 @@
+<div style="display: flex; justify-content: space-between;">
+    <h1 mat-dialog-title>{{this.dialog_data?.id ? 'Update ' : 'Create '}} Task</h1>
+    <button mat-icon-button (click)="colapseOrExpand(false)"
+        *ngIf="dialog_data.isOpenInDialog"><mat-icon>fullscreen</mat-icon></button>
+    <button mat-icon-button (click)="colapseOrExpand(true)"
+        *ngIf="!dialog_data.isOpenInDialog"><mat-icon>fullscreen_exit</mat-icon></button>
+</div>
+<form class="example-form" [formGroup]="formGroup"
+    style="display: flex; justify-content: space-evenly;margin-top: 24px;"
+    [style.flex-direction]="dialog_data.isOpenInDialog ? 'column' : 'row'">
+    <mat-form-field>
+        <mat-label>Task Name</mat-label>
+        <input matInput formControlName="taskName">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Task Description</mat-label>
+        <input matInput formControlName="taskDescription">
+    </mat-form-field>
+    <mat-form-field [ngClass]="id ? '' : 'mat-select'">
+        <mat-label>Select Status</mat-label>
+        <mat-select formControlName="status">
+            <mat-option value="">All</mat-option>
+            <mat-option *ngFor="let status of allStatus" [value]="status">{{status}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Select Priority</mat-label>
+        <mat-select formControlName="priority">
+            <mat-option value="">All</mat-option>
+            <mat-option *ngFor="let priority of priorities" [value]="priority">{{priority}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Choose due date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dueDate">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <!-- <button mat-button (click)="filterData()">Filter</button> -->
+</form>
+<div style="position: relative;left: 1200px;">
+    <button mat-raised-button color="primary"
+        (click)="dialogRef.close(); router.navigate(['dashboard'], { state: undefined })"
+        style="margin-right: 16px;">Close</button>
+    <button mat-raised-button color="accent" (click)="saveFormData()">Submit</button>
+</div>
