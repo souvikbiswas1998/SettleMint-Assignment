@@ -41,10 +41,10 @@
         <div *ngFor="let item of toDoList; let ii = index" class="task"
             [ngClass]="{'priorityHigh': item.priority == 'High', 'priorityMedium': item.priority == 'Medium', 'priorityLow': item.priority == 'Low'}"
             cdkDrag [cdkDragData]="item">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <div class="card-body">
-                    <p class="card-text" style="margin:0px">TaskName:{{item.taskName}} </p>
-                    <p class="card-text" style="margin:0px">TaskDescription:{{item.taskDescription}} </p>
+                    <p class="card-text" style="margin:0px">Task Name:{{item.taskName}} </p>
+                    <p class="card-text" style="margin:0px">Task Description:{{item.taskDescription}} </p>
                     <p class="card-text" style="margin:0px">Priority:{{item.priority}} </p>
                     <p class="card-text" style="margin:0px">Status:{{item.status}} </p>
                     <p>DueDate:{{format(item.dueDate)}}
@@ -67,10 +67,10 @@
             cdkDrag [cdkDragData]="item">
 
 
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <div class="card-body">
-                    <p class="card-text" style="margin:0px">TaskName:{{item.taskName}} </p>
-                    <p class="card-text" style="margin:0px">TaskDescription:{{item.taskDescription}} </p>
+                    <p class="card-text" style="margin:0px">Task Name:{{item.taskName}} </p>
+                    <p class="card-text" style="margin:0px">Task Description:{{item.taskDescription}} </p>
                     <p class="card-text" style="margin:0px">Priority:{{item.priority}} </p>
                     <p class="card-text" style="margin:0px">Status:{{item.status}} </p>
                     <p>DueDate:{{format(item.dueDate)}}
@@ -94,10 +94,10 @@
             cdkDrag [cdkDragData]="item">
 
 
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <div class="card-body">
-                    <p class="card-text" style="margin:0px">TaskName:{{item.taskName}} </p>
-                    <p class="card-text" style="margin:0px">TaskDescription:{{item.taskDescription}} </p>
+                    <p class="card-text" style="margin:0px">Task Name:{{item.taskName}} </p>
+                    <p class="card-text" style="margin:0px">Task Description:{{item.taskDescription}} </p>
                     <p class="card-text" style="margin:0px">Priority:{{item.priority}} </p>
                     <p class="card-text" style="margin:0px">Status:{{item.status}} </p>
                     <p>DueDate:{{format(item.dueDate)}}
