@@ -26,7 +26,8 @@ import data from '../../assets/data.json';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
     bgcolor = 'lightyellow';
-    format = (value: string) => formatDate(value, 'short', this.locale)
+    format = (value: string) => formatDate(value, 'MMM dd, YYYY', this.locale)
+    format2 = (value: string) => formatDate(value, 'dd/MM/YYYY HH:MM', this.locale)
     localData: any = data;
     formGroup!: FormGroup;
 
@@ -76,7 +77,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     drop(event: any) {
         // console.log(event.item.data);
         // console.log(event.container.id);
-        if (event?.item?.data) event.item.data.status = event.container.id;
+        if (event?.item?.data) {
+            event.item.data.status = event.container.id;
+            event.item.data.lastUpdated = new Date();
+        }
         if (event.previousContainer === event.container) {
             moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
         } else {

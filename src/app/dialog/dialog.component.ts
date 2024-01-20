@@ -57,6 +57,7 @@ export class DialogComponent {
     if (this.formGroup.invalid) return this.dataService.showSnackbar('all the form fields are reuired');
     let data2 = this.formGroup.value;
     data2.id = this.id || +new Date()
+    data2.lastUpdated = new Date()
     if (this.id) {
       let index = data.findIndex((task: any) => task.id == +this.id)
       data[index] = data2;

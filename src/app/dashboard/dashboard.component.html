@@ -43,11 +43,14 @@
             cdkDrag [cdkDragData]="item">
             <div class="card">
                 <div class="card-body">
-                    <p class="card-text" style="margin:0px">Task Name:{{item.taskName}} </p>
-                    <p class="card-text" style="margin:0px">Task Description:{{item.taskDescription}} </p>
-                    <p class="card-text" style="margin:0px">Priority:{{item.priority}} </p>
-                    <p class="card-text" style="margin:0px">Status:{{item.status}} </p>
-                    <p>DueDate:{{format(item.dueDate)}}
+                    <p class="card-text" style="margin:0px">Task Name: {{item.taskName}} </p>
+                    <p class="card-text" style="margin:0px">Task Description: {{item.taskDescription}} </p>
+                    <p class="card-text" style="margin:0px">Priority: {{item.priority}} </p>
+                    <p class="card-text" style="margin:0px">Status: {{item.status}} </p>
+                    <p></p>
+                    <p class="card-text" style="margin:0px">Last modified on: {{format2(item.lastUpdated)}} </p>
+
+                    <p>Due Date: {{format(item.dueDate)}}
                         <i style="float:right" (click)="openDialog(item?.id)"><mat-icon>edit</mat-icon></i>
                         <i style="float:right;padding-right:16px;color:red"
                             (click)="delete(item?.id)"><mat-icon>delete</mat-icon></i>
@@ -69,11 +72,13 @@
 
             <div class="card">
                 <div class="card-body">
-                    <p class="card-text" style="margin:0px">Task Name:{{item.taskName}} </p>
-                    <p class="card-text" style="margin:0px">Task Description:{{item.taskDescription}} </p>
-                    <p class="card-text" style="margin:0px">Priority:{{item.priority}} </p>
-                    <p class="card-text" style="margin:0px">Status:{{item.status}} </p>
-                    <p>DueDate:{{format(item.dueDate)}}
+                    <p class="card-text" style="margin:0px">Task Name: {{item.taskName}} </p>
+                    <p class="card-text" style="margin:0px">Task Description: {{item.taskDescription}} </p>
+                    <p class="card-text" style="margin:0px">Priority: {{item.priority}} </p>
+                    <p class="card-text" style="margin:0px">Status: {{item.status}} </p>
+                    <p></p>
+                    <p class="card-text" style="margin:0px">Last modified on: {{format2(item.lastUpdated)}} </p>
+                    <p>Due Date: {{format(item.dueDate)}}
                         <i style="float:right" (click)="openDialog(item?.id)"><mat-icon>edit</mat-icon></i>
                         <i style="float:right;padding-right:16px;color:red"
                             (click)="delete(item?.id)"><mat-icon>delete</mat-icon></i>
@@ -96,11 +101,13 @@
 
             <div class="card">
                 <div class="card-body">
-                    <p class="card-text" style="margin:0px">Task Name:{{item.taskName}} </p>
-                    <p class="card-text" style="margin:0px">Task Description:{{item.taskDescription}} </p>
-                    <p class="card-text" style="margin:0px">Priority:{{item.priority}} </p>
-                    <p class="card-text" style="margin:0px">Status:{{item.status}} </p>
-                    <p>DueDate:{{format(item.dueDate)}}
+                    <p class="card-text" style="margin:0px">Task Name: {{item.taskName}} </p>
+                    <p class="card-text" style="margin:0px">Task Description: {{item.taskDescription}} </p>
+                    <p class="card-text" style="margin:0px">Priority: {{item.priority}} </p>
+                    <p class="card-text" style="margin:0px">Status: {{item.status}} </p>
+                    <p></p>
+                    <p class="card-text" style="margin:0px">Last modified on: {{format2(item.lastUpdated)}} </p>
+                    <p>Due Date: {{format(item.dueDate)}}
                         <i style="float:right" (click)="openDialog(item?.id)"><mat-icon>edit</mat-icon></i>
                         <i style="float:right;padding-right:16px;color:red"
                             (click)="delete(item.id)"><mat-icon>delete</mat-icon></i>

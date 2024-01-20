@@ -31,7 +31,8 @@ div {
     margin-left: 10px;
     display: flex;
     flex-direction: column;
-    width: 33vw
+    width: 33vw;
+    overflow-x: scroll;
 }
 
 .task {
@@ -58,6 +59,9 @@ div {
     border-bottom: 0.5em solid #ffffff;
     text-align: center;
     font-family: "Roboto Slab", sans-serif;
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
 }
 
 .todo {
